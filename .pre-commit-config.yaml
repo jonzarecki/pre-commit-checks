@@ -1,13 +1,11 @@
 repos:
   - repo: local
     hooks:
-      #sdfsd
-      #sdfsd
-      #      - id: jupytext
+#      - id: jupytext
       #        name: jupytext
-      #        entry: jupytext
-      #        language: conda
-      #        args: [ --sync ]
+      #        entry: jupytext --from ipynb --to py:percent --pre-commit
+      #        pass_filenames: false
+      #        language: system
       - id: pylint
         name: pylint
         entry: pylint
