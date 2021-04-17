@@ -1,6 +1,6 @@
 repos:
-  - repo: https://github.com/pycqa/pylint
-    rev: pylint-2.6.0
+  - repo: https://github.com/mwouts/jupytext
+    rev: v1.10.0  # CURRENT_TAG/COMMIT_HASH
     hooks:
-      - id: pylint
-        args: [ --rcfile=/home/yonatanz/Downloads/pylintrc ]
+      - id: jupytext
+        args: [ --sync ]
