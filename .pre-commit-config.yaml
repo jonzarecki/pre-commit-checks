@@ -1,7 +1,9 @@
 repos:
   - repo: local
     hooks:
-#      - id: jupytext
+      #sdfsd
+      #sdfsd
+      #      - id: jupytext
       #        name: jupytext
       #        entry: jupytext
       #        language: conda
