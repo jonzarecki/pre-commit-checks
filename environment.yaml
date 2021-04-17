@@ -1,0 +1,19 @@
+# base environment for my utils
+name: test
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.7
+  # Core scientific python
+  - numpy
+  - pip
+
+
+  - notebook
+
+  - jupyter
+  - pylint
+  - jupytext
+  - pre-commit
