@@ -1,6 +1,8 @@
 repos:
-  - repo: https://github.com/mwouts/jupytext
-    rev: v1.10.0  # CURRENT_TAG/COMMIT_HASH
+  - repo: local
     hooks:
       - id: jupytext
-        args: [ --sync ]
+        name: jupytext
+        entry: echo 'hello world'
+        language: system
+#        args: [ --sync ]
