@@ -6,14 +6,17 @@ channels:
 
 dependencies:
   - python=3.7
+  - pip
   # Core scientific python
   - numpy
-  - pip
-
-
-  - notebook
+  - pandas
 
   - jupyter
-  - pylint
+  - notebook
+
+
   - jupytext
   - pre-commit
+  - pip:
+      - sqlfluff  # sql linter
+      - pylint  # python linter
