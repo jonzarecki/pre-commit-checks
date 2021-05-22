@@ -1,25 +1,39 @@
 repos:
-#  - repo: local
-  #    hooks:
-  ##      - id: jupytext
-  #      #        name: jupytext
-  #      #        entry: jupytext --from ipynb --to py:percent --pre-commit
-  #      #        pass_filenames: false
-  #      #        language: system
-  #      - id: pylint
-  #        name: pylint
-  #        entry: pylint
-  #        language: system
-  #        types: [ python ]
-
-  - repo: https://github.com/sqlfluff/sqlfluff
-    rev: 0.5.6
-    id: sqlfluff
+  - repo: https://github.com/mwouts/jupytext
+    rev: v1.11.0  # CURRENT_TAG/COMMIT_HASH
     hooks:
-      - id: sqlfluff-lint
-        # For dbt projects, this installs the dbt "extras":
-        # additional_dependencies: ['.[dbt]']
-      - id: sqlfluff-fix
-        # Arbitrary arguments to show an example
-        # args: [--rules, "L003,L014"]
-        # additional_dependencies: ['.[dbt]']
+      - id: jupytext
+        args: [ --from, ipynb, --to, "py:percent" ]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v1.2.3
+    hooks:
+      - id: flake8
+
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: /home/yonatanz/anaconda3/envs/test/bin/pylint
+        language: system
+        types: [ python ]
+        args:
+          [
+              "-rn",
+              "-sn",
+              "--rcfile=.configs/.pylintrc",
+              "--load-plugins=pylint.extensions.docparams",
+          ]
+        # disabled plugins: pylint.extensions.mccabe
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.812
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy
+        language: python
+        types: [ python ]
+        args: [ "--ignore-missing-imports", "--scripts-are-modules" ]
+        require_serial: true
+        additional_dependencies: [ ]
