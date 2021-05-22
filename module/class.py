@@ -10,7 +10,9 @@ class Tasdasdasdasdasdasdasdasd:
 
 
 sql = """
-select max(b) from test_table 
+select max(b) from test_table
 
 where 1=1 and 2=2 group by a
+
+
 """
