@@ -27,6 +27,7 @@ b = 2
 a22 = 31
 
 new_param = 3
+new_param2 = 4
 
 # %%
 c = 5
