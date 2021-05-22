@@ -10,12 +10,10 @@ repos:
     hooks:
       - id: flake8
 
-  - repo: local
+  - repo: https://github.com/pre-commit/mirrors-pylint
+    rev: 'v2.7.4'  # Use the sha / tag you want to point at
     hooks:
       - id: pylint
-        name: pylint
-        entry: /home/yonatanz/anaconda3/envs/test/bin/pylint
-        language: system
         types: [ python ]
         args:
           [
