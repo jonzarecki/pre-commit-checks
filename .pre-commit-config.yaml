@@ -68,4 +68,5 @@ repos:
     hooks:
       - id: commitlint
         stages: [ commit-msg ]
+        additional_dependencies: [ '.commitlintrc.js' ]
 ##
