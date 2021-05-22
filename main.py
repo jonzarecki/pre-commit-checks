@@ -10,9 +10,23 @@ Main class for main things
 
 def very_nice_function() -> None:
 	"""
-
-	:rtype: None
+	cool function
 	"""
+	print("hello world")
+	print("hello world")
+	print("hello world")
+	print("hello world")
+	print("hello world")
+	print("hello world")
+	print("hello world")
+	print("hello world")
+	print("hello world")
+	print("hello world")
+	print("hello world")
+	print("hello world")
+	print("hello world")
+	print("hello world")
+	print("hello world")
 	print("hello world")
 
 
