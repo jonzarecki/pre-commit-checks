@@ -29,6 +29,7 @@ def very_nice_function() -> None:
 	print("hello world")
 	print("hello world")
 	print("hello world")
+	print("hello world")
 
 
 def print_hi2(name: str):
