@@ -18,5 +18,4 @@ dependencies:
   - jupytext
   - pre-commit
   - pip:
-      - sqlfluff  # sql linter
       - pylint  # python linter
