@@ -35,7 +35,7 @@ repos:
           [
               "-rn",
               "-sn",
-              "--rcfile=.configs/.pylintrc",
+              "--rcfile=.pylintrc",
               "--load-plugins=pylint.extensions.docparams",
           ]
         # disabled plugins: pylint.extensions.mccabe
