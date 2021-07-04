@@ -1,32 +1,140 @@
 repos:
-  - repo: https://github.com/mwouts/jupytext
-    rev: v1.11.0
-    hooks:
-      - id: jupytext
-        args: [ --from, ipynb, --to, "py:percent" ]
-  - repo: https://github.com/pre-commit/pre-commit-hooks
+-   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
-      - id: trailing-whitespace
-      - id: end-of-file-fixer
+    -   id: trailing-whitespace
+    -   id: check-added-large-files
+        args: ['--maxkb=2000']
+    -   id: end-of-file-fixer
+    -   id: check-case-conflict
+    -   id: check-docstring-first
+    -   id: check-executables-have-shebangs
+    -   id: check-json
+    -   id: check-merge-conflict
+    -   id: check-toml
+    -   id: check-xml
+    -   id: check-yaml
+    -   id: debug-statements
+    -   id: mixed-line-ending
+        args: ['--fix=lf']
+    -   id: requirements-txt-fixer
 
-  - repo: https://github.com/myint/autoflake
-    rev: v1.4
+-   repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v2.1.0
     hooks:
-      - id: autoflake
-        args:
-          - --in-place
-          - --remove-all-unused-imports
-          - --expand-star-imports
-          - --remove-duplicate-keys
-          - --remove-unused-variables
+    -   id: pretty-format-ini
+        args: [--autofix]
+        exclude: .pylintrc
+    -   id: pretty-format-toml
+        args: [--autofix]
 
-  - repo: https://github.com/PyCQA/isort
+-   repo: https://github.com/timothycrosley/isort
+    rev: 5.8.0
+    hooks:
+    -   id: isort
+        exclude: docs/
+
+-   repo: https://github.com/ambv/black
+    rev: 21.5b2
+    hooks:
+    - id: black
+
+#-   repo: https://github.com/myint/autoflake
+#    rev: v1.4
+#    hooks:
+#    -   id: autoflake
+#        args: ['--expand-star-imports', '--ignore-init-module-imports', '--in-place']
+#        exclude: docs/
+
+-   repo: https://github.com/pycqa/flake8
+    rev: 3.9.2
+    hooks:
+    -   id: flake8
+        exclude: docs/
+        # https://dev.to/mmphego/why-you-need-to-stop-using-git-hooks-41
+        additional_dependencies: [
+            flake8-return==1.1.2,
+            flake8-simplify==0.14.1,
+            flake8-2020, # flake8 plugin which checks for misuse of `sys.version` or `sys.version_info`
+            flake8-absolute-import, # uses a simple check of the AST for each from x import y statement to flag relative imports.
+            flake8-blind-except, # A flake8 extension that checks for blind except: statements
+            flake8-builtins, # checks that there is no agent_id collision between your code and the Python builtin variables.
+            flake8-bugbear, # A plugin for flake8 finding likely bugs and design problems in your program.
+            flake8-builtins, # Check for python builtins being used as variables or parameters.
+            flake8-comprehensions, # It helps you write a better list/set/dict comprehensions.
+            flake8-deprecated, # Warns about deprecated method calls.
+            flake8-eradicate, # Flake8 plugin to find commented out code
+            flake8-license, # flake8 plugin which verifies that source files contain license, header at the top.
+            flake8-pytest, # pytest assert checker plugin for flake8
+            flake8-tabs, # Tab (or Spaces) indentation style checker for flake8
+            pep8-naming, # Check PEP-8 naming conventions, plugin for flake8
+        ]
+
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v0.901'
+    hooks:
+    -   id: mypy
+        args: [ "--ignore-missing-imports", "--scripts-are-modules" ]
+        additional_dependencies:
+        - attrs
+
+-   repo: https://github.com/pycqa/pydocstyle
+    rev: 6.1.1
+    hooks:
+    -   id: pydocstyle
+        exclude: ^.*(__init__.py|test.*)
+
+-   repo: https://github.com/terrencepreilly/darglint
+    rev: v1.8.0
+    hooks:
+    - id: darglint
+
+-   repo: https://github.com/seddonym/import-linter
+    rev: v1.2.1
+    hooks:
+    -   id: import-linter
+
+-   repo: https://github.com/MarcoGorelli/absolufy-imports
+    rev: v0.3.0
+    hooks:
+    -   id: absolufy-imports
+
+-   repo: https://github.com/asottile/pyupgrade
+    rev: v2.19.4
+    hooks:
+    -   id: pyupgrade
+        args: [--py3-plus, --py36-plus]
+
+-   repo: https://github.com/codespell-project/codespell
+    rev: v2.1.0
+    hooks:
+    -   id: codespell
+
+-   repo: https://github.com/kynan/nbstripout
+    rev: 0.3.9
+    hooks:
+    -   id: nbstripout
+
+-   repo: https://github.com/mwouts/jupytext
+    rev: v1.11.3
+    hooks:
+    -   id: jupytext
+        files: '^notebooks/(notes|nb_python)/(.*\.py|.*\.ipynb)$'
+        exclude: .*__init__.py
+      #        args: [ --update-metadata, '{"jupytext":{"notebook_metadata_filter":"all", "cell_metadata_filter":"-all"}, "accelerator":"GPU"}', --set-formats, 'notebooks//nb_python//py:percent,notebooks//notes//ipynb,', --pipe, black, --pipe, 'isort - --treat-comment-as-code "# %%"', --pipe-fmt, 'py:percent', --sync]
+        args: [--pre-commit, --update-metadata, '{"jupytext":{"notebook_metadata_filter":"all", "cell_metadata_filter":"-all"}, "accelerator":"GPU"}', --set-formats, 'notebooks//nb_python//py:percent,notebooks//notes//ipynb,', --pipe, black, --pipe, 'isort - --treat-comment-as-code "# %%"', --pipe-fmt, 'py:percent', --sync ]
+        pass_filenames: false
+        additional_dependencies:
+            - 'nbformat<=5.0.8'
+            - black
+            - isort
+
+-   repo: https://github.com/PyCQA/isort
     rev: 5.8.0
     hooks:
       - id: isort
 
-  - repo: https://github.com/pre-commit/mirrors-pylint
+-   repo: https://github.com/pre-commit/mirrors-pylint
     rev: 'v2.7.4'
     hooks:
       - id: pylint
@@ -40,36 +148,29 @@ repos:
           ]
         # disabled plugins: pylint.extensions.mccabe
 
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.812
-    hooks:
-      - id: mypy
-        name: mypy
-        entry: mypy
-        language: python
-        types: [ python ]
-        args: [ "--ignore-missing-imports", "--scripts-are-modules" ]
-        require_serial: true
-        additional_dependencies: [ ]
 
-  - repo: https://github.com/pryorda/dockerfilelint-precommit-hooks
-    rev: v0.1.0
-    hooks:
-      - id: dockerfilelint
-        stages: [ commit ]
-
-  - repo: https://github.com/kynan/nbstripout
-    rev: 0.3.9
-    hooks:
-      - id: nbstripout
-
-#  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
-#    rev: v4.1.0
-#    hooks:
-#      - id: commitlint
-#        stages: [ commit-msg ]
-#        additional_dependencies: [ '@commitlint/config-conventional' ]
-  - repo: https://github.com/jorisroovers/gitlint
+-   repo: https://github.com/jorisroovers/gitlint
     rev: v0.15.1
     hooks:
     -   id: gitlint
+
+-   repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.7.2.1
+    hooks:
+    -   id: shellcheck
+
+-   repo: https://github.com/jendrikseipp/vulture
+    rev: 'v2.3'  # or any later Vulture version
+    hooks:
+      - id: vulture
+        name: vulture
+        language: python
+        entry: vulture
+        description: Find unused Python code.
+        types: [ python ]
+        args: [
+            --sort-by-size,
+            "--min-confidence", "100",
+            "--exclude", "**/.ipynb_checkpoints/*.py,notebooks/,tests",
+            "."
+        ]
