@@ -31,7 +31,7 @@ debug=false
 contrib=contrib-title-conventional-commits
 
 # This is an example of how to configure the "title-max-length" rule and
-# set the line-length it enforces to 80
+# set the line-length it enforces to 120
 [title-max-length]
 line-length=120
 
