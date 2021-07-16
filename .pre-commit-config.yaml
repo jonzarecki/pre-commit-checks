@@ -151,6 +151,8 @@ repos:
     -   id: check-yaml
     -   id: debug-statements
     -   id: requirements-txt-fixer
+    -   id: pretty-format-json
+        args: ["--autofix"]
 
 -   repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
     rev: v2.1.0
