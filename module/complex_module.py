@@ -7,7 +7,7 @@ class Tasdasdasdasdasdasdasdasd:
     def _post_comment(self):
         """Example of complex function for flake8 to fail on.
 
-        Has a complexity of 14 (number of branching paths)
+        Has a complexity of 13 (number of branching paths)
         """
         if self.another_param:
             if self.success:
@@ -26,7 +26,7 @@ class Tasdasdasdasdasdasdasdasd:
                 comment = ":)"
         else:
             comment = "down there is too complex"
-            # if you copy the above if body down here you will get a complexity of 14
+            # if you copy the above if body down here you will get a complexity error
 
         print(comment)
         if self.success:
