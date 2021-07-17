@@ -1,10 +1,16 @@
 """Example class for nice things."""
 
 
-class Tasdasdasdasdasdasdasdasd:
+class SimpleClass:
     a = 1
     b = 2
     c = 3
+
+
+def f2(a: bool) -> int:
+    if a:
+        return 1
+    return 2  # mypy fails without it
 
 
 def f(sql: str) -> str:

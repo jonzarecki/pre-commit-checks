@@ -148,6 +148,7 @@ disable=abstract-method,
         xrange-builtin,
         zip-builtin-not-iterating,
         unexpected-line-ending-format,
+        missing-class-docstring
 
 
 [REPORTS]
