@@ -148,8 +148,9 @@ disable=abstract-method,
         xrange-builtin,
         zip-builtin-not-iterating,
         unexpected-line-ending-format,
-        missing-class-docstring
-
+        missing-class-docstring,
+        missing-raises-doc,
+        protected-access,
 
 [REPORTS]
 
@@ -202,7 +203,7 @@ property-classes=abc.abstractproperty,cached_property.cached_property,cached_pro
 function-rgx=^(?:(?P<exempt>setUp|tearDown|setUpModule|tearDownModule)|(?P<camel_case>_?[A-Z][a-zA-Z0-9]*)|(?P<snake_case>_?[a-z][a-z0-9_]*))$
 
 # Regular expression matching correct variable names
-variable-rgx=^[a-z][a-z0-9_]*$
+variable-rgx=^_?[a-z][a-z0-9_]*$
 
 # Regular expression matching correct constant names
 const-rgx=^(_?[A-Z][A-Z0-9_]*|__[a-z0-9_]+__|_?[a-z][a-z0-9_]*)$
@@ -211,7 +212,7 @@ const-rgx=^(_?[A-Z][A-Z0-9_]*|__[a-z0-9_]+__|_?[a-z][a-z0-9_]*)$
 attr-rgx=^_{0,2}[a-z][a-z0-9_]*$
 
 # Regular expression matching correct argument names
-argument-rgx=^[a-z][a-z0-9_]*$
+argument-rgx=^_?[a-z][a-z0-9_]*$
 
 # Regular expression matching correct class attribute names
 class-attribute-rgx=^(_?[A-Z][A-Z0-9_]*|__[a-z0-9_]+__|_?[a-z][a-z0-9_]*)$
@@ -264,6 +265,10 @@ ignored-classes=optparse.Values,thread._local,_thread._local
 # expressions are accepted.
 generated-members=
 
+
+[DESIGN]
+# Argument names that match this expression will be ignored.
+ignored-argument-names=_.*|kwargs|args
 
 [FORMAT]
 
@@ -324,7 +329,7 @@ init-import=no
 
 # A regular expression matching the name of dummy variables (i.e. expectedly
 # not used).
-dummy-variables-rgx=^\*{0,2}(_$|unused_|dummy_)
+dummy-variables-rgx=^\*{0,2}(_$|unused_|dummy_|_)
 
 # List of additional names supposed to be defined in builtins. Remember that
 # you should avoid to define new builtins when possible.
