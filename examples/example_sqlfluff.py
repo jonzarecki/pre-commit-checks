@@ -8,7 +8,8 @@ SELECT
 FROM myTable
 """
 
-if __name__ == "__main__":
+
+def test_sqlfluff_is_running_and_has_no_output_on_correct_sqls() -> None:
     # kind-of a test
     print(apply_sqlfluff(my_bad_query, "postgres"))
     print("=================================")

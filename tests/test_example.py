@@ -1,10 +1,14 @@
-import unittest
+# pylint: disable=redefined-outer-name
+import pytest
+
+from utils.example_util import _util_function
 
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, True)
+@pytest.fixture
+def setup1() -> int:
+    return _util_function()
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_something(setup1: int) -> None:
+    print(setup1)
+    assert setup1 == 3, "always right"
