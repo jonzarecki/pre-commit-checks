@@ -14,8 +14,7 @@ dependencies:
   - jupyter
   - notebook
 
-
   - jupytext
   - pre-commit
   - pip:
-      - pylint  # python linter
+      - pylint # python linter
